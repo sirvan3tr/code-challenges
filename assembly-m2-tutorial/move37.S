@@ -1,0 +1,20 @@
+mov	(%rdi),%rcx
+mov	8(%rdi),%rdx
+mov	16(%rdi),%rsi
+mov	%rdx,%rax
+cmp	%rdx,%rsi
+cmovl	%rsi,%rax
+cmovl	%rdx,%rsi
+mov	%rcx,%rdx
+cmp	%rcx,%rsi
+cmovl	%rsi,%rdx
+cmovl	%rcx,%rsi
+cmp	%rax,%rdx
+cmovge	%rax,%rcx
+cmovl	%rax,%rdx
+mov	%rcx,(%rdi)
+mov	%rdx,8(%rdi)
+mov	%rsi,16(%rdi)
+ret
+.globl	sort3
+.size	sort3,.-sort3
